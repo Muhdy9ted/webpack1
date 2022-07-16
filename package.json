@@ -1,0 +1,16 @@
+{
+  "name": "webpack1",
+  "version": "1.0.0",
+  "description": "an indepth intro to webpack ecosystem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack ./src/js/app.js "
+  },
+  "author": "Muhammed",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
