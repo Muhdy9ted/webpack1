@@ -1,4 +1,12 @@
 import { secretButton, secretParagraph } from "./dom-loader";
+import '../styles/scss/main.scss';
+import generateJoke from "./generateJoke";
+import '../styles/css/main.css'
+import '../styles/css/input-element.css';
+
+
+
+
 var showSecret = false;
 
 secretButton.addEventListener('click', toggleSecretState);
