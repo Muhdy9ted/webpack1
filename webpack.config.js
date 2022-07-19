@@ -1,6 +1,7 @@
 const path = require('path');
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     mode: 'development',
@@ -9,7 +10,8 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[contenthash].js',
         publicPath: '/',
-        clean: true
+        clean: true,
+        assetModuleFilename: '[name][ext]'
     },
     devtool: 'source-map',
     devServer:{
@@ -38,6 +40,20 @@ module.exports = {
                     'style-loader',
                     'css-loader',
                 ]
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }   
+            },
+            {
+                test: /\.(png|jpg|gif|jfif|jpeg)$/i,
+                type: 'asset/resource',
             }
         ]
     },
@@ -48,5 +64,6 @@ module.exports = {
             filename: 'index.html',
             template: path.resolve(__dirname, 'template.html'),
         }),
+        new BundleAnalyzerPlugin()
     ]
 }
